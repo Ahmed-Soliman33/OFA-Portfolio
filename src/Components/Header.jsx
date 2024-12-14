@@ -65,7 +65,6 @@ const Header = ({
               alignItems: "end",
             }}
           >
-            // update
             <img className="mr-2 w-[35px]" src={logo} alt="logo" />
             OFA <span className="text-secondary">PSD</span>
           </Typography>
