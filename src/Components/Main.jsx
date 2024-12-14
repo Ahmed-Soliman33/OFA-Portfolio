@@ -16,7 +16,11 @@ const Main = () => {
           </p>
         </div>
         <div className="order-1 lg:order-2">
-          <img width={"700px"} src={mainImage} alt="main image" />
+          <img
+            className="w-[500px] xl:w-[600px]"
+            src={mainImage}
+            alt="main image"
+          />
         </div>
       </div>
     </div>
