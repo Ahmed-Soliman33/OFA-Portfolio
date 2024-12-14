@@ -4,10 +4,14 @@ import Lottie from "lottie-react";
 import doneAnimation from "../animation/done.json";
 import contactAnimation from "../animation/contact.json";
 
-const Contact = () => {
+const Contact = ({ contactRef }) => {
   const [state, handleSubmit] = useForm("xrbgvwwj");
   return (
-    <section className="contact-us m-auto mt-20 w-[80%]" id="contact">
+    <section
+      ref={contactRef}
+      className="contact-us m-auto mt-20 w-[80%]"
+      id="contact"
+    >
       <h1 className="title">
         <span className="icon-envelope"> </span>
         Contact me

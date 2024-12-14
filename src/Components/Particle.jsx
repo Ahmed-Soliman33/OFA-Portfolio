@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Sphere } from "@react-three/drei";
 import { pointsInner, pointsOuter } from "../utils/utils";
-import Home from "../Pages/Home";
+import Main from "./Main";
 
 const ParticleRing = () => {
   return (
@@ -23,7 +23,7 @@ const ParticleRing = () => {
       </Canvas>
 
       <div className="pointer-events-none absolute left-[50%] top-[50%] w-full -translate-x-[50%] -translate-y-[50%] pt-[60vh] lg:pt-0">
-        <Home />
+        <Main />
       </div>
     </div>
   );

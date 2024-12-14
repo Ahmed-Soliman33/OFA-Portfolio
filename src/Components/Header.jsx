@@ -14,32 +14,29 @@ import {
 import { Menu as MenuIcon, Adb as AdbIcon } from "@mui/icons-material";
 import logo from "../assets/logo-2.png";
 
-const pages = [
-  "Home",
-  "Services",
-  "Portfolio",
-  "About",
-  /*"Courses",*/ "Contact",
-];
-
-const Header = () => {
+const Header = ({
+  aboutRef,
+  contactRef,
+  portfolioRef,
+  serviceRef,
+  scrollToSection,
+}) => {
+  const pages = [
+    { page: "Home", ref: "/" },
+    { page: "Services", ref: serviceRef },
+    { page: "Portfolio", ref: portfolioRef },
+    { page: "About", ref: aboutRef },
+    /*"Courses",*/ { page: "Contact", ref: contactRef },
+  ];
   const [anchorElNav, setAnchorElNav] = useState(null);
-  const [anchorElUser, setAnchorElUser] = useState(null);
-
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
   };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
   return (
     <AppBar
       sx={{
@@ -72,7 +69,7 @@ const Header = () => {
             OFA <span className="text-secondary">PSD</span>
           </Typography>
 
-          <Box sx={{ display: { xs: "flex", md: "none" } }}>
+          <Box sx={{ display: { xs: "flex", sm: "none" } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -104,17 +101,22 @@ const Header = () => {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography sx={{ textAlign: "center" }}>{page}</Typography>
+                <MenuItem
+                  key={page.page}
+                  onClick={() => scrollToSection(page.ref)}
+                >
+                  <Typography sx={{ textAlign: "center" }}>
+                    {page.page}
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-          <Box sx={{ display: { xs: "none", md: "flex" } }}>
+          <Box sx={{ display: { xs: "none", sm: "flex" } }}>
             {pages.map((page) => (
               <Button
-                key={page}
-                onClick={handleCloseNavMenu}
+                key={page.page}
+                onClick={() => scrollToSection(page.ref)}
                 sx={{
                   borderRadius: 0,
                   transition: ".6s",
@@ -129,7 +131,7 @@ const Header = () => {
                   },
                 }}
               >
-                {page}
+                {page.page}
               </Button>
             ))}
           </Box>

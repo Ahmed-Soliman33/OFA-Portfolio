@@ -5,7 +5,7 @@ import instagram from "../assets/instagram-white-icon.png";
 import youtube from "../assets/youtube-app-white-icon.webp";
 import logo from "../assets/logo-2.png";
 
-const Footer = () => {
+const Footer = ({ scrollToSection, aboutRef, serviceRef, portfolioRef }) => {
   return (
     <div className="m-auto flex h-[330px] w-full flex-col items-center gap-5 bg-[#121212] py-4 text-center text-2xl">
       <div>
@@ -61,22 +61,31 @@ const Footer = () => {
       <footer className="mt-7 flex w-full flex-col items-center justify-center gap-3 px-2 text-xl md:flex-row md:justify-between md:px-10">
         <ul className="flex gap-2 text-[14px] md:gap-5 md:text-[17px]">
           <li>
-            <a className="hover:text-[#00f2f2cf]" href="#up">
+            <a className="hover:text-[#00f2f2cf]" href="/">
               Home
             </a>
           </li>
           <li>
-            <a className="hover:text-[#00f2f2cf]" href="#projs">
+            <a
+              onClick={() => scrollToSection(serviceRef)}
+              className="cursor-pointer hover:text-[#00f2f2cf]"
+            >
               Services
             </a>
           </li>
           <li>
-            <a className="hover:text-[#00f2f2cf]" href="#projs">
+            <a
+              onClick={() => scrollToSection(portfolioRef)}
+              className="cursor-pointer hover:text-[#00f2f2cf]"
+            >
               Portfolio
             </a>
           </li>
           <li>
-            <a className="hover:text-[#00f2f2cf]" href="#projs">
+            <a
+              onClick={() => scrollToSection(aboutRef)}
+              className="cursor-pointer hover:text-[#00f2f2cf]"
+            >
               About
             </a>
           </li>

@@ -5,11 +5,12 @@ import social_imgs from "../data/social";
 import youtube_imgs from "../data/youtube";
 import Carousel from "./Carousel";
 
-const Portfolio = () => {
+const Portfolio = ({ portfolioRef }) => {
   const [hovered, setHovered] = useState(false);
 
   return (
     <div
+      ref={portfolioRef}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       className="mt-6 flex flex-col text-center md:gap-2 md:text-start"

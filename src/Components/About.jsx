@@ -6,14 +6,14 @@ import indesign from "../assets/indesign.png";
 import premiere from "../assets/premiere-pro.png";
 import saif_img from "../assets/main.png";
 
-const About = () => {
+const About = ({ aboutRef }) => {
   return (
     <div className="m-auto mt-32 flex w-[80%] flex-col items-center gap-20 lg:flex-row">
       <div className="pb-20">
         <img className="flex-1" src={saif_img} alt="" />
       </div>
       <div className="max-w-[550px]">
-        <h1 className="font-oswald text-[20px] md:text-[35px]">
+        <h1 ref={aboutRef} className="font-oswald text-[20px] md:text-[35px]">
           Hi! I'm Saif OFA
         </h1>
         <p className="font-poppins my-2 text-[12px] font-light md:text-[16px]">

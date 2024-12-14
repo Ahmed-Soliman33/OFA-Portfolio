@@ -6,6 +6,7 @@ import {
   useMotionValue,
   useSpring,
 } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const ROTATION_RANGE = 32.5;
 const HALF_ROTATION_RANGE = ROTATION_RANGE / 2;
@@ -59,8 +60,8 @@ const TiltCard = ({
       }}
       className={`relative h-96 w-72 rounded-xl bg-gradient-to-br from-gradiant_color-1 to-secondary`}
     >
-      <a
-        href={linkUrl}
+      <Link
+        to={linkUrl}
         style={{
           transform: "translateZ(75px)",
           transformStyle: "preserve-3d",
@@ -76,7 +77,7 @@ const TiltCard = ({
         >
           {title}
         </p>
-      </a>
+      </Link>
     </motion.div>
   );
 };
