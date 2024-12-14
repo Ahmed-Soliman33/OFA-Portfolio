@@ -17,7 +17,7 @@ const Main = () => {
         </div>
         <div className="order-1 lg:order-2">
           <img
-            className="w-[500px] xl:w-[600px]"
+            className="w-[500px] xl:w-[700px]"
             src={mainImage}
             alt="main image"
           />
