@@ -5,8 +5,6 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import "swiper/css/free-mode";
 import "swiper/css/scrollbar";
-
-// import "./styles.css";
 import {
   Autoplay,
   EffectCoverflow,
@@ -71,6 +69,7 @@ export default function Carousel({ data }) {
               className="h-full w-full scale-75"
               src={item.imgUrl}
               alt="portfolio image"
+              loading="lazy" // تحميل الصور عند الحاجة فقط
             />
           </SwiperSlide>
         ))}

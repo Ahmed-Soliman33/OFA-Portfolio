@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, memo, useCallback } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Sphere } from "@react-three/drei";
 import { pointsInner, pointsOuter } from "../utils/utils";
@@ -32,19 +32,30 @@ const ParticleRing = () => {
 const PointCircle = () => {
   const ref = useRef(null);
 
-  useFrame(({ clock }) => {
-    if (ref.current?.rotation) {
-      ref.current.rotation.z = clock.getElapsedTime() * 0.05;
-    }
-  });
+  // Use useCallback to avoid re-creating the function on every render
+  useFrame(
+    useCallback(({ clock }) => {
+      if (ref.current?.rotation) {
+        ref.current.rotation.z = clock.getElapsedTime() * 0.05;
+      }
+    }, []),
+  );
 
   return (
     <group ref={ref}>
       {pointsInner.map((point) => (
-        <Point key={point.idx} position={point.position} color={point.color} />
+        <MemoizedPoint
+          key={point.idx}
+          position={point.position}
+          color={point.color}
+        />
       ))}
       {pointsOuter.map((point) => (
-        <Point key={point.idx} position={point.position} color={point.color} />
+        <MemoizedPoint
+          key={point.idx}
+          position={point.position}
+          color={point.color}
+        />
       ))}
     </group>
   );
@@ -62,5 +73,8 @@ const Point = ({ position, color }) => {
     </Sphere>
   );
 };
+
+// Memoize the Point component to avoid unnecessary re-renders
+const MemoizedPoint = memo(Point);
 
 export default ParticleRing;

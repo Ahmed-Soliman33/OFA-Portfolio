@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, memo } from "react";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import {
   motion,
@@ -58,7 +58,7 @@ const TiltCard = ({
         transformStyle: "preserve-3d",
         transform,
       }}
-      className={`relative h-96 w-72 rounded-xl bg-gradient-to-br from-gradiant_color-1 to-secondary`}
+      className={`relative h-96 w-72 rounded-xl bg-gradient-to-br ${c1} ${c2}`}
     >
       <Link
         to={linkUrl}
@@ -82,14 +82,16 @@ const TiltCard = ({
   );
 };
 
+const MemoizedTiltCard = memo(TiltCard);
+
 const Card_3D = ({ linkUrl, title, color_1, color_2, icon }) => {
   return (
     <div className="grid place-content-center px-4 py-12 text-primary">
-      <TiltCard
+      <MemoizedTiltCard
         linkUrl={linkUrl}
         title={title}
-        c1={`from-${color_1}`}
-        c2={`to-${color_2}`}
+        c1={`from-${color_1}`} // تأكد من أن color_1 هو اسم لون صحيح
+        c2={`to-${color_2}`} // تأكد من أن color_2 هو اسم لون صحيح
         icon={icon}
       />
     </div>

@@ -1,3 +1,4 @@
+import React, { useRef, useCallback } from "react";
 import "../index.css";
 import Footer from "../Components/Footer";
 import Header from "../Components/Header";
@@ -6,7 +7,6 @@ import Portfolio from "../Components/Portfolio";
 import Services from "../Components/Services";
 import About from "../Components/About";
 import Contact from "../Components/Contact";
-import { useRef } from "react";
 
 const Layout = () => {
   const serviceRef = useRef(null);
@@ -14,9 +14,9 @@ const Layout = () => {
   const aboutRef = useRef(null);
   const contactRef = useRef(null);
 
-  const scrollToSection = (ref) => {
+  const scrollToSection = useCallback((ref) => {
     ref.current?.scrollIntoView({ behavior: "smooth" });
-  };
+  }, []);
 
   return (
     <div className="bg-background_color font-inter text-primary">
@@ -34,7 +34,6 @@ const Layout = () => {
         <About aboutRef={aboutRef} />
         <Contact contactRef={contactRef} />
       </div>
-
       <Footer
         scrollToSection={scrollToSection}
         aboutRef={aboutRef}

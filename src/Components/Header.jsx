@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback, memo } from "react";
 import {
   AppBar,
   Box,
@@ -7,11 +7,10 @@ import {
   Typography,
   Menu,
   Container,
-  Avatar,
   Button,
   MenuItem,
 } from "@mui/material";
-import { Menu as MenuIcon, Adb as AdbIcon } from "@mui/icons-material";
+import { Menu as MenuIcon } from "@mui/icons-material";
 import logo from "../assets/logo-2.png";
 
 const Header = ({
@@ -26,16 +25,24 @@ const Header = ({
     { page: "Services", ref: serviceRef },
     { page: "Portfolio", ref: portfolioRef },
     { page: "About", ref: aboutRef },
-    /*"Courses",*/ { page: "Contact", ref: contactRef },
+    { page: "Contact", ref: contactRef },
   ];
+
   const [anchorElNav, setAnchorElNav] = useState(null);
-  const handleOpenNavMenu = (event) => {
+
+  const handleOpenNavMenu = useCallback((event) => {
     setAnchorElNav(event.currentTarget);
+  }, []);
+
+  const handlescrollInto = (ref) => {
+    if (ref && ref.current) {
+      ref.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   };
 
-  const handleCloseNavMenu = () => {
+  const handleCloseNavMenu = useCallback(() => {
     setAnchorElNav(null);
-  };
+  }, []);
 
   return (
     <AppBar
@@ -69,6 +76,7 @@ const Header = ({
             OFA <span className="text-secondary">PSD</span>
           </Typography>
 
+          {/* Menu for mobile */}
           <Box sx={{ display: { xs: "flex", sm: "none" } }}>
             <IconButton
               size="large"
@@ -103,7 +111,9 @@ const Header = ({
               {pages.map((page) => (
                 <MenuItem
                   key={page.page}
-                  onClick={() => scrollToSection(page.ref)}
+                  onClick={() => {
+                    handlescrollInto(page.ref);
+                  }}
                 >
                   <Typography sx={{ textAlign: "center" }}>
                     {page.page}
@@ -112,11 +122,13 @@ const Header = ({
               ))}
             </Menu>
           </Box>
+
+          {/* Desktop navigation */}
           <Box sx={{ display: { xs: "none", sm: "flex" } }}>
             {pages.map((page) => (
               <Button
                 key={page.page}
-                onClick={() => scrollToSection(page.ref)}
+                onClick={() => handlescrollInto(page.ref)}
                 sx={{
                   borderRadius: 0,
                   transition: ".6s",
@@ -141,4 +153,4 @@ const Header = ({
   );
 };
 
-export default Header;
+export default memo(Header);
