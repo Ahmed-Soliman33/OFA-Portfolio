@@ -65,7 +65,7 @@ const Header = ({
               alignItems: "end",
             }}
           >
-            <Avatar className="mr-2" src={logo} alt="logo" />
+            <img className="mr-2 w-[35px]" src={logo} alt="logo" />
             OFA <span className="text-secondary">PSD</span>
           </Typography>
 
