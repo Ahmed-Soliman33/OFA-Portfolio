@@ -1,6 +1,6 @@
 import "../index.css";
 import Footer from "../Components/Footer";
-import Header from "../Components/header";
+import Header from "../Components/Header";
 import ParticleRing from "../Components/Particle";
 import Portfolio from "../Components/Portfolio";
 import Services from "./Services";
