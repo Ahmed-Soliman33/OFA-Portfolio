@@ -129,8 +129,7 @@ const PortfolioPage = () => {
               fontSize: "2rem",
               "&:hover": {
                 backgroundColor: "transparent",
-                transform: "scale(1.2)",
-                transform: "rotate(120deg)",
+                transform: "scale(1.2) rotate(120deg)",
               },
             }}
           >
